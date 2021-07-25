@@ -7,10 +7,10 @@ class ContactForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      centerTitle: true,
-      title: Text('Lista de Contato'),  
+        title: Text(
+          'Cadastro de Contatos',
+        ),
       ),
-       body: ListView(),
     );
   }
 }

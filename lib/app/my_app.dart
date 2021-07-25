@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'view/contact_list.dart';
 
 class MyApp extends StatelessWidget {
+  static const HOME = '/';
+  static const CONTAC_FORM = 'contact-form';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,8 +14,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (context) => ContactList(),
-        'contact-form': (context) => ContactForm(),
+        HOME: (context) => ContactList(),
+        CONTAC_FORM: (context) => ContactForm(),
       },
     );
   }
