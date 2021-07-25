@@ -14,14 +14,8 @@ class Contact {
     @required this.email,
     @required this.urlAvatar,
   });
+
 }
 
-teste() {
-  var contato = Contact(
-    id: null,
-    nome: null,
-    telefone: null,
-    email: null,
-    urlAvatar: null,
-  );
-}
+
+

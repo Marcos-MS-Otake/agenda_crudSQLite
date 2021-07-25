@@ -1,4 +1,5 @@
-import 'package:agenda_crud/app/database/script.dart';
+import 'package:agenda_crud/app/database/sqlite/connection.dart';
+import 'package:agenda_crud/app/database/sqlite/script.dart';
 import 'package:agenda_crud/app/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -10,25 +11,21 @@ class ContactList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future<List<Map<String, dynamic>>> _buscar() async {
-      String path = join(await getDatabasesPath(), "banco");
-      Database db = await openDatabase(
-        path,
-        version: 1,
-        onCreate: (db, v) {
-          db.execute(createTable);
-          db.execute(insert1);
-          db.execute(insert2);
-          db.execute(insert3);
-        },
-      );
-      return db.query('contact');
+      Database db = await Connection.get();
+      return db.query('contact'); //retorna a consulta da tabela criada
     }
 
+    //Retorna os dados que estão no futuro
     return FutureBuilder(
+      //chama nossa função de criação do BD
       future: _buscar(),
+
+      //parametros obrigatórios context, e uma variavel
       builder: (context, futuro) {
+        // verifica se contem dados
         if (futuro.hasData) {
-          var lista = futuro.data;
+          var lista =
+              futuro.data; // recebe a lista futura assim facilita a manipulação
           return Scaffold(
             appBar: AppBar(
               title: Text('Lista de Contato'),
