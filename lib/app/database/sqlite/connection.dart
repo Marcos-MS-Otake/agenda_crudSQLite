@@ -7,7 +7,7 @@ class Connection {
 
   static Future<Database> get() async {
     if (_db == null) {
-      // variavel path recebe o caminho do BD
+      // join esta na lib path do pubspec variavel path recebe o caminho do BD
       var path = join(await getDatabasesPath(), 'banco_contatos');
       //abertura do banco de dados
       _db = await openDatabase(
